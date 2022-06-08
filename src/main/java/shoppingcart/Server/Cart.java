@@ -44,7 +44,7 @@ public class Cart {
         List<String> response = new ArrayList<>();
         if (cartList.size() > 0) {
             for (int i = 0; i < cartList.size(); i++) {
-                String element = Integer.toString(i + 1) + "." + cartList.get(i) + System.lineSeparator();
+                String element = Integer.toString(i + 1) + ". " + cartList.get(i);
                 response.add(element);
             }
         } else {
@@ -58,15 +58,17 @@ public class Cart {
         cartList.addAll(items);
     }
 
-    public void delete(String index, List<String> cartList) {
+    public String delete(String index, List<String> cartList) {
         int toIndex = Integer.parseInt(index);
         int toDelete = toIndex - 1;
+        String response = "";
         if (toIndex > cartList.size()) {
-            System.out.println("Incorrect item index\n");
+            response = "Incorrect item index\n";
         } else {
-            System.out.printf("%s removed from cart\n", cartList.get(toDelete));
+            response = cartList.get(toDelete) + " removed from cart\n";
             cartList.remove(toDelete);
         }
+        return response;
     }
 
     public void save(List<String> cartList) {

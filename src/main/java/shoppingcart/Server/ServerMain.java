@@ -58,7 +58,7 @@ public class ServerMain {
 
                 case "list":
                     List<String> responseList = cart.list(cartList);
-                    dos.writeUTF(responseList.toString());
+                    dos.writeUTF(responseList.toString() + "\n");
                     break;
 
                 case "add":
@@ -70,14 +70,13 @@ public class ServerMain {
                     break;
 
                 case "delete":
-                    cart.delete(splitString[1], cartList);
-                    String responseDelete = "Items deleted from cart\n";
+                    String responseDelete = cart.delete(splitString[1], cartList);
                     dos.writeUTF(responseDelete);
                     break;
 
                 case "save":
                     cart.save(cartList);
-                    String responseSave = "Cart contents saved to" + cart.getName() + ".\n";
+                    String responseSave = "Cart contents saved to " + cart.getName() + ".\n";
                     dos.writeUTF(responseSave);
                     break;
 
