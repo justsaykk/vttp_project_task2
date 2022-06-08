@@ -40,14 +40,18 @@ public class Cart {
         return cartList;
     }
 
-    public void list(List<String> cartList) {
+    public List<String> list(List<String> cartList) {
+        List<String> response = new ArrayList<>();
         if (cartList.size() > 0) {
             for (int i = 0; i < cartList.size(); i++) {
-                System.out.printf("%d. %s\n", (i + 1), cartList.get(i));
+                String element = Integer.toString(i + 1) + "." + cartList.get(i) + System.lineSeparator();
+                response.add(element);
             }
         } else {
-            System.out.println("Your cart is empty\n");
+            String emptyRes = "Your cart is empty\n";
+            response.add(emptyRes);
         }
+        return response;
     }
 
     public void add(List<String> items, List<String> cartList) {
