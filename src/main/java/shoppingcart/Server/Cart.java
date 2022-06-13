@@ -14,9 +14,9 @@ public class Cart {
     private Path path;
     private String name;
 
-    public Cart(String name) {
+    public Cart(String name, String folder) {
         this.name = name;
-        this.path = Paths.get("./shoppingcart/" + name + ".cart");
+        this.path = Paths.get("./" + folder + "/" + name + ".cart");
     }
 
     public String getName() {
@@ -72,7 +72,11 @@ public class Cart {
     }
 
     public void save(List<String> cartList) {
+        File file = path.toFile();
         try {
+            if (!file.exists()) {
+                file.createNewFile();
+            };
             Files.write(path, cartList);
         } catch (IOException e) {
             System.out.println(e.getMessage());

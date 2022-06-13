@@ -19,6 +19,7 @@ public class ServerMain {
 
         // Create a server socket & listen to port
         int PORT = Integer.parseInt(args[1]);
+        String folder = args[0];
         ServerSocket server = new ServerSocket(PORT);
 
         System.out.printf("Waiting for Connection on port %d \n", PORT);
@@ -44,7 +45,7 @@ public class ServerMain {
             switch (command) {
                 case "load":
                     String name = splitString[1];
-                    cart = new Cart(name);
+                    cart = new Cart(name, folder);
                     cartList = cart.load();
                     String responseLoad = name + " shopping cart loaded\n";
                     dos.writeUTF(responseLoad);

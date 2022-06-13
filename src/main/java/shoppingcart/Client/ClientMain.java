@@ -25,13 +25,14 @@ public class ClientMain {
         System.out.printf("Connected to shopping cart server at %s on %s port %d\n", localhost, user, port);
 
         // Get input and output stream - bytes
-        // Get the input stream
-        InputStream is = sock.getInputStream();
-        DataInputStream dis = new DataInputStream(is);
 
         // Get outputstream
         OutputStream os = sock.getOutputStream();
         DataOutputStream dos = new DataOutputStream(os);
+
+        // Get the input stream
+        InputStream is = sock.getInputStream();
+        DataInputStream dis = new DataInputStream(is);
 
         // Request server to load file
         dos.writeUTF("load " + user);
